@@ -47,6 +47,7 @@ const Home = ({ navigation, user }) => {
               <Text style={styles.text}>Click here to show User data:</Text>
             </TouchableOpacity>
             <ListUser />
+            
           </View>
         </View>
       </SafeAreaView>
