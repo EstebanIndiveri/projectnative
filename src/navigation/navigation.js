@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons'
+import Cart from '../screens/Cart/Cart.screen'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -29,6 +30,15 @@ function MyTabs() {
             return <Icon name={'ios-settings'} size={25} color={color} />
           }
         }}
+      />
+      <Tab.Screen
+      name="My cart"
+      component={Cart}
+      options={{
+        tabBarIcon:({focused,color,size})=>{
+          return <Icon name={'ios-cart'} size={25} color={color}/>
+        }
+      }}
       />
     </Tab.Navigator>
   )
