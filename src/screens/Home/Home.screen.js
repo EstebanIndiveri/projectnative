@@ -4,16 +4,18 @@ import {
   View,
   Text,
   StatusBar,
-  TouchableOpacity
+  TouchableOpacity,
+  StyleSheet,
 } from 'react-native'
-import styles from './Home.style'
+// import styles from './Home.style'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { connect, useDispatch } from 'react-redux'
 import { fetchDataUser } from '../../stores/actions/user.action'
+import { Avatar, Card, Paragraph, Title,Button } from 'react-native-paper'
 
 const Home = ({ navigation, user }) => {
   const dispatch = useDispatch()
-
+  const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
   function ListUser() {
     return user.map(data => {
       return (
@@ -35,22 +37,33 @@ const Home = ({ navigation, user }) => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor={'#f9f9f9'} />
-      <SafeAreaView style={styles.SafeAreaView1} />
-      <SafeAreaView style={styles.SafeAreaView2}>
-        <View style={styles.outerWrapper}>
-          <Icon name={'ios-home'} size={100} color={'purple'} />
-          <View>
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={() => dispatch(fetchDataUser())}>
-              <Text style={styles.text}>Click here to show User data:</Text>
-            </TouchableOpacity>
-            <ListUser />
-            
-          </View>
+      {/* <SafeAreaView style={styles.SafeAreaView1} /> */}
+          <View style={{flex:1}}>
+          <Card style={styled.carta}>
+          <Card.Title style={styled.title} title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
+          <Card.Content>
+            <Title style={styled.title}>Card title</Title>
+            <Paragraph style={styled.title}>Card content</Paragraph>
+          </Card.Content>
+          <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          <Card.Actions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </Card.Actions>
+        </Card>
+        <Card style={styled.carta}>
+          <Card.Title style={styled.title} title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
+          <Card.Content>
+            <Title style={styled.title}>Card title</Title>
+            <Paragraph style={styled.title}>Card content</Paragraph>
+          </Card.Content>
+          <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          <Card.Actions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+          </Card.Actions>
+        </Card>
         </View>
-      </SafeAreaView>
     </>
   )
 }
@@ -60,5 +73,17 @@ const mapStateToProps = state => {
     user: state.userReducer.users
   }
 }
+const styled = StyleSheet.create({
+  carta:{
+    backgroundColor:'#FFF',
+    color:'#323232',
+    borderRadius:15,
+    elevation:5
+    },
+  title:{
+    color:'#323232',
+  }
+
+})
 
 export default connect(mapStateToProps, null)(Home)
