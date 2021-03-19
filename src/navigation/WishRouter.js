@@ -1,12 +1,15 @@
 import React from 'react';
+import { SafeAreaView, Text, View } from 'react-native';
 
 const WishRouter = () => {
     return ( 
-        <View>
-            {/* TODO 
-                ROUTER STACK FOR WISH
-            */}
-        </View>
+        <SafeAreaView>
+                <View>
+                    <Text>
+                        My Wish List
+                    </Text>
+                </View>
+        </SafeAreaView>
      );
 }
  

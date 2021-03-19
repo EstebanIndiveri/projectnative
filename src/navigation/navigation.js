@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Cart from '../screens/Cart/Cart.screen'
+import WishRouter from './WishRouter'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -34,6 +35,15 @@ function MyTabs() {
       <Tab.Screen
       name="My cart"
       component={Cart}
+      options={{
+        tabBarIcon:({focused,color,size})=>{
+          return <Icon name={'ios-cart'} size={25} color={color}/>
+        }
+      }}
+      />
+      <Tab.Screen
+      name="WishList"
+      component={WishRouter}
       options={{
         tabBarIcon:({focused,color,size})=>{
           return <Icon name={'ios-cart'} size={25} color={color}/>
